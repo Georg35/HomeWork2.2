@@ -47,31 +47,23 @@ public class Kogtervan extends Hogwarts {
         this.creative = creative;
     }
 
-    public void print(Kogtervan[] kogtervans) {
-        System.out.println("Студенты факультета Когтерван");
-        for (int i = 0; i < kogtervans.length; i++) {
-            Kogtervan kogtervan = kogtervans[i];
-            System.out.println(kogtervan.getName() + ", сила магии " + kogtervan.getConjure() + ", расстояние трансгрессии " + kogtervan.getTransgress() + ". Свойства характера: ум " + kogtervan.getSmartness() + ", мудрость " + kogtervan.getWisdom() + ", остроумие " + kogtervan.getWit() + ", творчество " + kogtervan.getCreative());
-        }
-
+    @Override
+    public String toString() {
+        return "Студент факультета Когтерван " + getName() +
+                ": навык колдовства = " + getConjure() +
+                ", навык трансгрессии = " + getTransgress() +
+                ", ум = " + smartness +
+                ", мудрость = " + wisdom +
+                ", остроумие = " + wit +
+                ", творчество = " + creative;
     }
 
-    public void printCompareFacult(Kogtervan[] kogtervans, String name1, String name2) {
-        int power1 = 0, power2 = 0;
-        int k1 = 0, k2 = 0;
+    public void printCompareFacult(Kogtervan hogwarts2) {
+        if ((smartness + wisdom + wit + creative) > (hogwarts2.smartness + hogwarts2.wisdom + hogwarts2.wit + hogwarts2.creative)) {
+            System.out.println(getName() + " лучший Когтерванец, чем " + hogwarts2.getName());
+        } else {
+            System.out.println(hogwarts2.getName() + " лучший Когтерванец, чем " + getName());
 
-        for (int i = 0; i < kogtervans.length; i++) {
-            if (kogtervans[i].getName().equals(name1)) {
-                power1 = kogtervans[i].getSmartness() + kogtervans[i].getCreative() + kogtervans[i].getWit() + kogtervans[i].getWisdom();
-                k2 = i;
-            }
         }
-        if (power1 > power2) {
-            System.out.println(kogtervans[k1].getName() + " лучший Когтерванец, чем " + kogtervans[k2].getName());
-        } else if (power2 > power1) {
-            System.out.println(kogtervans[k2].getName() + " лучший Когтерванец, чем " + kogtervans[k1].getName());
-        } else
-            System.out.println("Силы равны");
     }
 }
-
